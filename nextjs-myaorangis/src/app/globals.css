@@ -1,39 +1,50 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    --kids-bg: #fdf6ff;
-    --kids-surface: #ffffff;
-    --kids-border: #f0e6ff;
-    --kids-text: #3b0764;
-    --kids-muted: #7e22ce;
-    --kids-hint: #a78bfa;
-    --kids-accent: #7c3aed;
-    --kids-accent-bg: #f3e8ff;
-    --kids-accent-text: #6b21a8;
-    --kids-pink-bg: #fce7f3;
-    --kids-pink-text: #9d174d;
-  }
+@theme {
+  --font-family-nunito: var(--font-nunito), system-ui;
 
-  .dark {
-    --kids-bg: #1a1025;
-    --kids-surface: #2d1b4e;
-    --kids-border: #4c2b7a;
-    --kids-text: #f3e8ff;
-    --kids-muted: #c4b5fd;
-    --kids-hint: #a78bfa;
-    --kids-accent: #c084fc;
-    --kids-accent-bg: #3b1f6b;
-    --kids-accent-text: #e9d5ff;
-    --kids-pink-bg: #4a1942;
-    --kids-pink-text: #f9a8d4;
-  }
+  --color-kids-bg: var(--kids-bg);
+  --color-kids-surface: var(--kids-surface);
+  --color-kids-border: var(--kids-border);
+  --color-kids-text: var(--kids-text);
+  --color-kids-muted: var(--kids-muted);
+  --color-kids-accent: var(--kids-accent);
+  --color-kids-accent-bg: var(--kids-accent-bg);
+  --color-kids-accent-text: var(--kids-accent-text);
 
-  body {
-    background-color: var(--kids-bg);
-    color: var(--kids-text);
-    font-family: "Comic Neue", "Nunito", system-ui, sans-serif;
-  }
+  --radius-2xl: 1.5rem;
+  --radius-3xl: 2rem;
+}
+
+:root {
+  --kids-bg: #fdf6ff;
+  --kids-surface: #ffffff;
+  --kids-border: #f0e6ff;
+  --kids-text: #3b0764;
+  --kids-muted: #7e22ce;
+  --kids-hint: #a78bfa;
+  --kids-accent: #7c3aed;
+  --kids-accent-bg: #f3e8ff;
+  --kids-accent-text: #6b21a8;
+  --kids-pink-bg: #fce7f3;
+  --kids-pink-text: #9d174d;
+}
+
+.dark {
+  --kids-bg: #1a1025;
+  --kids-surface: #2d1b4e;
+  --kids-border: #4c2b7a;
+  --kids-text: #f3e8ff;
+  --kids-muted: #c4b5fd;
+  --kids-hint: #a78bfa;
+  --kids-accent: #c084fc;
+  --kids-accent-bg: #3b1f6b;
+  --kids-accent-text: #e9d5ff;
+  --kids-pink-bg: #4a1942;
+  --kids-pink-text: #f9a8d4;
+}
+
+body {
+  background-color: var(--kids-bg);
+  color: var(--kids-text);
 }
