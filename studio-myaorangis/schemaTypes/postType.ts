@@ -32,34 +32,34 @@ export const postType = defineType({
       of: [{type: 'block'}, {type: 'gameEmbed'}],
     }),
     defineField({
-  name: 'questions',
-  title: 'Comprehension Questions',
-  type: 'array',
-  of: [
-    {
-      type: 'object',
-      name: 'question',
-      fields: [
-        defineField({ name: 'question', type: 'string', title: 'Question' }),
-        defineField({ name: 'a', type: 'string', title: 'Option A' }),
-        defineField({ name: 'b', type: 'string', title: 'Option B' }),
-        defineField({ name: 'c', type: 'string', title: 'Option C' }),
-        defineField({ name: 'd', type: 'string', title: 'Option D' }),
-        defineField({
-          name: 'correct',
-          type: 'string',
-          title: 'Correct Answer',
-          options: {
-            list: ['a', 'b', 'c', 'd'],
-            layout: 'radio',
+      name: 'questions',
+      title: 'Comprehension Questions',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'question',
+          fields: [
+            defineField({name: 'question', type: 'string', title: 'Question'}),
+            defineField({name: 'a', type: 'string', title: 'Option A'}),
+            defineField({name: 'b', type: 'string', title: 'Option B'}),
+            defineField({name: 'c', type: 'string', title: 'Option C'}),
+            defineField({name: 'd', type: 'string', title: 'Option D'}),
+            defineField({
+              name: 'correct',
+              type: 'string',
+              title: 'Correct Answer',
+              options: {
+                list: ['a', 'b', 'c', 'd'],
+                layout: 'radio',
+              },
+            }),
+          ],
+          preview: {
+            select: {title: 'question'},
           },
-        }),
+        },
       ],
-      preview: {
-        select: { title: 'question' },
-      },
-    },
-  ],
-}),
+    }),
   ],
 })
