@@ -47,9 +47,15 @@ export default async function IndexPage() {
             const isoDate = date.toISOString().split("T")[0];
 
             return (
-              <article key={post._id} className="flex max-w-xl flex-col items-start justify-between">
+              <article
+                key={post._id}
+                className="flex max-w-xl flex-col items-start justify-between"
+              >
                 <div className="flex items-center gap-x-4 text-xs">
-                  <time dateTime={isoDate} className="text-gray-500 dark:text-gray-400">
+                  <time
+                    dateTime={isoDate}
+                    className="text-gray-500 dark:text-gray-400"
+                  >
                     {formattedDate}
                   </time>
                   {post.category?.title && (
@@ -88,7 +94,9 @@ export default async function IndexPage() {
                         </Link>
                       </p>
                       {post.author.role && (
-                        <p className="text-gray-600 dark:text-gray-400">{post.author.role}</p>
+                        <p className="text-gray-600 dark:text-gray-400">
+                          {post.author.role}
+                        </p>
                       )}
                     </div>
                   </div>

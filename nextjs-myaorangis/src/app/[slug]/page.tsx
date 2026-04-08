@@ -3,7 +3,10 @@ import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "@/sanity/client";
 import Link from "next/link";
-import { CheckCircleIcon, InformationCircleIcon } from "@heroicons/react/20/solid";
+import {
+  CheckCircleIcon,
+  InformationCircleIcon,
+} from "@heroicons/react/20/solid";
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
@@ -20,7 +23,11 @@ export default async function PostPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const post = await client.fetch<SanityDocument>(POST_QUERY, await params, options);
+  const post = await client.fetch<SanityDocument>(
+    POST_QUERY,
+    await params,
+    options,
+  );
   const postImageUrl = post.image
     ? urlFor(post.image)?.width(1310).height(873).url()
     : null;
@@ -28,7 +35,6 @@ export default async function PostPage({
   return (
     <div className="bg-white px-6 py-32 lg:px-8 dark:bg-gray-900">
       <div className="mx-auto max-w-3xl text-base/7 text-gray-700 dark:text-gray-300">
-
         <Link
           href="/"
           className="text-sm text-indigo-600 hover:underline dark:text-indigo-400 block mb-8"
@@ -66,9 +72,7 @@ export default async function PostPage({
               value={post.body}
               components={{
                 block: {
-                  normal: ({ children }) => (
-                    <p className="mb-5">{children}</p>
-                  ),
+                  normal: ({ children }) => <p className="mb-5">{children}</p>,
                   h2: ({ children }) => (
                     <h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
                       {children}
