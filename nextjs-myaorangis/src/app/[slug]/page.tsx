@@ -9,8 +9,9 @@ import {
 } from "@heroicons/react/20/solid";
 
 import { GameEmbed } from "@/components/GameEmbed";
+import { QuizSection } from "@/components/QuizSection";
 
-const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
+const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]{..., questions}`;
 
 const { projectId, dataset } = client.config();
 const urlFor = (source: SanityImageSource) =>
@@ -70,57 +71,62 @@ export default async function PostPage({
 
         <div className="mt-10 max-w-2xl text-gray-600 dark:text-gray-400">
           {Array.isArray(post.body) && (
-            <PortableText
-              value={post.body}
-              components={{
-                block: {
-                  normal: ({ children }) => <p className="mb-5">{children}</p>,
-                  h2: ({ children }) => (
-                    <h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
-                      {children}
-                    </h2>
-                  ),
-                  blockquote: ({ children }) => (
-                    <figure className="mt-10 border-l border-indigo-600 pl-9 dark:border-indigo-400">
-                      <blockquote className="font-semibold text-gray-900 dark:text-white">
-                        <p>{children}</p>
-                      </blockquote>
-                    </figure>
-                  ),
-                },
-                list: {
-                  bullet: ({ children }) => (
-                    <ul
-                      role="list"
-                      className="mt-8 max-w-xl space-y-8 text-gray-600 dark:text-gray-400"
-                    >
-                      {children}
-                    </ul>
-                  ),
-                },
-                listItem: {
-                  bullet: ({ children }) => (
-                    <li className="flex gap-x-3">
-                      <CheckCircleIcon
-                        aria-hidden="true"
-                        className="mt-1 size-5 flex-none text-indigo-600 dark:text-indigo-400"
-                      />
-                      <span>{children}</span>
-                    </li>
-                  ),
-                },
-                marks: {
-                  strong: ({ children }) => (
-                    <strong className="font-semibold text-gray-900 dark:text-white">
-                      {children}
-                    </strong>
-                  ),
-                },
-                types: {
-                  gameEmbed: ({ value }) => <GameEmbed value={value} />,
-                },
-              }}
-            />
+            <>
+              <PortableText
+                value={post.body}
+                components={{
+                  block: {
+                    normal: ({ children }) => (
+                      <p className="mb-5">{children}</p>
+                    ),
+                    h2: ({ children }) => (
+                      <h2 className="mt-16 text-3xl font-semibold tracking-tight text-pretty text-gray-900 dark:text-white">
+                        {children}
+                      </h2>
+                    ),
+                    blockquote: ({ children }) => (
+                      <figure className="mt-10 border-l border-indigo-600 pl-9 dark:border-indigo-400">
+                        <blockquote className="font-semibold text-gray-900 dark:text-white">
+                          <p>{children}</p>
+                        </blockquote>
+                      </figure>
+                    ),
+                  },
+                  list: {
+                    bullet: ({ children }) => (
+                      <ul
+                        role="list"
+                        className="mt-8 max-w-xl space-y-8 text-gray-600 dark:text-gray-400"
+                      >
+                        {children}
+                      </ul>
+                    ),
+                  },
+                  listItem: {
+                    bullet: ({ children }) => (
+                      <li className="flex gap-x-3">
+                        <CheckCircleIcon
+                          aria-hidden="true"
+                          className="mt-1 size-5 flex-none text-indigo-600 dark:text-indigo-400"
+                        />
+                        <span>{children}</span>
+                      </li>
+                    ),
+                  },
+                  marks: {
+                    strong: ({ children }) => (
+                      <strong className="font-semibold text-gray-900 dark:text-white">
+                        {children}
+                      </strong>
+                    ),
+                  },
+                  types: {
+                    gameEmbed: ({ value }) => <GameEmbed value={value} />,
+                  },
+                }}
+              />
+              <QuizSection questions={post.questions || []} />
+            </>
           )}
         </div>
 
