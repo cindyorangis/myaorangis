@@ -1,12 +1,14 @@
 import { PortableText, type SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
-import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import type { SanityImageSource } from "@sanity/image-url";
 import { client } from "@/sanity/client";
 import Link from "next/link";
 import {
   CheckCircleIcon,
   InformationCircleIcon,
 } from "@heroicons/react/20/solid";
+
+import { GameEmbed } from "@/components/GameEmbed";
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
@@ -113,6 +115,9 @@ export default async function PostPage({
                       {children}
                     </strong>
                   ),
+                },
+                types: {
+                  gameEmbed: ({ value }) => <GameEmbed value={value} />,
                 },
               }}
             />
