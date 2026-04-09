@@ -21,10 +21,10 @@ export function QuizSection({ questions }: { questions: Question[] }) {
   return (
     <div className="mt-20 border-t border-gray-200 dark:border-gray-700 pt-16">
       <p className="text-base font-semibold text-indigo-600 dark:text-indigo-400 mb-2">
-        ✨ Now let's talk about the story
+        ✨ Now let&apos;s talk about the story
       </p>
       <h2 className="text-2xl font-semibold text-gray-900 dark:text-white mb-10">
-        Read each question carefully — you've got this!
+        Read each question carefully — you&apos;ve got this!
       </h2>
 
       <div className="space-y-10 max-w-2xl">
