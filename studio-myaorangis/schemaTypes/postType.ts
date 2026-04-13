@@ -32,6 +32,20 @@ export const postType = defineType({
       of: [{type: 'block'}, {type: 'gameEmbed'}],
     }),
     defineField({
+      name: 'category',
+      title: 'Category',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'Story', value: 'story'},
+          {title: 'Game', value: 'game'},
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'story',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'questions',
       title: 'Comprehension Questions',
       type: 'array',
