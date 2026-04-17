@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { PortableText, type SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url";
@@ -25,11 +26,18 @@ export default async function PostPage({
 }: {
   params: Promise<{ slug: string }>;
 }) {
+  const resolvedParams = await params;
+
   const post = await client.fetch<SanityDocument>(
     POST_QUERY,
-    await params,
+    resolvedParams,
     options,
   );
+
+  if (!post) {
+    return notFound();
+  }
+
   const postImageUrl = post.image
     ? urlFor(post.image)?.width(1310).height(873).url()
     : null;
